@@ -11,11 +11,14 @@ public class Algorithms {
         int evens = evens();
         int twoDigits=twoDigits();
         int greaterThan500=greaterThan500();
+        int newgreatestnum=greatestnum();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits); // check why s.nextInt() has to be replaced with n
         System.out.println(greaterThan500);
+        System.out.println(newgreatestnum);
         s.close();
+
     }
 
     public static int odds() throws FileNotFoundException{
@@ -74,3 +77,18 @@ public class Algorithms {
         }
         return totalsum;
     }
+
+
+    public static int greatestnum() throws FileNotFoundException{
+        int greatestnum=0;
+        int newgreatestnum=0;
+        while (s.hasNext()){
+            if (greatestnum<s.nextInt())
+            {
+          
+                newgreatestnum=(s.nextInt());
+            }
+        }
+        return newgreatestnum;
+}
+}
