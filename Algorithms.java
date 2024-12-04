@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 
 public class Algorithms {
     private static File f;
@@ -11,12 +12,19 @@ public class Algorithms {
         int evens = evens();
         int twoDigits=twoDigits();
         int greaterThan500=greaterThan500();
-        int newgreatestnum=greatestnum();
+        int greatestnum=greatestnum();
+        int smallestnum=smallestnum();
+        int sum=sum();
+        double mean=mean();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits); // check why s.nextInt() has to be replaced with n
         System.out.println(greaterThan500);
-        System.out.println(newgreatestnum);
+        System.out.println(greatestnum);
+        System.out.println(smallestnum);
+        System.out.println(sum);
+        System.out.println(mean);
+
         s.close();
 
     }
@@ -80,15 +88,60 @@ public class Algorithms {
 
 
     public static int greatestnum() throws FileNotFoundException{
+        s = new Scanner(f);
         int greatestnum=0;
-        int newgreatestnum=0;
+
         while (s.hasNext()){
             if (greatestnum<s.nextInt())
             {
           
-                newgreatestnum=(s.nextInt());
+                greatestnum=s.nextInt();
             }
         }
-        return newgreatestnum;
-}
+        return greatestnum;
+    }
+
+    public static int smallestnum() throws FileNotFoundException{
+        s = new Scanner(f);
+        int smallestnum=0;
+
+        while (s.hasNext()){
+            if (smallestnum>s.nextInt())
+            {
+
+                smallestnum=s.nextInt();
+            }
+        }
+        return smallestnum;
+    }
+
+    public static int sum() throws FileNotFoundException{
+        s = new Scanner(f);
+        int sum=0;
+
+        while (s.hasNext()){
+            sum+=s.nextInt();
+        }
+        return sum;
+
+    }
+
+    public static double mean() throws FileNotFoundException {
+        s = new Scanner(f);
+        double sum = 0;
+        double numofterms=0;
+
+        while (s.hasNext()) {
+            sum += s.nextInt();
+            numofterms+=1;
+        }
+        return ((sum)/numofterms);
+
+
+    }
+
+    public static double mode() throws FileNotFoundException {
+        s = new Scanner(f);
+        return 0;
+    }
 }
