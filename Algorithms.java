@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Algorithms {
     private static File f;
@@ -16,6 +16,7 @@ public class Algorithms {
         int smallestnum=smallestnum();
         int sum=sum();
         double mean=mean();
+        int mode=mode();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigits); // check why s.nextInt() has to be replaced with n
@@ -24,10 +25,12 @@ public class Algorithms {
         System.out.println(smallestnum);
         System.out.println(sum);
         System.out.println(mean);
+        System.out.println(mode);
 
-        s.close();
+    
 
     }
+
 
     public static int odds() throws FileNotFoundException{
         s = new Scanner(f);
@@ -140,8 +143,41 @@ public class Algorithms {
 
     }
 
-    public static double mode() throws FileNotFoundException {
+
+    public static int mode() throws FileNotFoundException {
         s = new Scanner(f);
-        return 0;
+        ArrayList<Integer> numvalues = new ArrayList<>();
+
+
+
+        while (s.hasNext()) {
+            numvalues.add(s.nextInt());
+
+        }
+        
+        int highestNumOfOccurances=0;
+        int mode=0;
+        int lengthOfArrayList=numvalues.size();
+
+        for (int numberInArray=0 ; numberInArray<lengthOfArrayList ; numberInArray++) 
+        {
+            int numOfOccurrences=0;
+
+            for (int number=0 ; number<lengthOfArrayList; number++) 
+            {
+                if (numvalues.get(numberInArray).equals(numvalues.get(number))) 
+                {
+                    numOfOccurrences++;
+                }
+
+                if (numOfOccurrences>highestNumOfOccurances)
+                {
+                    highestNumOfOccurances=numOfOccurrences;
+                    mode=numvalues.get(numberInArray);
+                }
+            } 
+        }
+
+        return mode;
     }
 }
